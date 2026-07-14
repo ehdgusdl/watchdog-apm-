@@ -1,0 +1,100 @@
+# OpenTelemetry Collector — 호스트의 Java Agent 로부터 OTLP 수신 후 Kafka 로 발행.
+#   gRPC 4317 -> host localhost:4317
+#   HTTP 4318 -> host localhost:4318
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otel-collector-config
+  namespace: watchdog
+data:
+  config.yaml: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: 0.0.0.0:4317
+          http:
+            endpoint: 0.0.0.0:4318
+
+    processors:
+      batch: {}
+
+    exporters:
+      kafka:
+        brokers:
+          - kafka.watchdog.svc.cluster.local:9094
+        # kafka exporter 최신 스키마: topic/encoding 은 신호별 하위 설정
+        metrics:
+          topic: metrics-deploys
+          encoding: otlp_json
+        traces:
+          topic: metrics-deploys
+          encoding: otlp_json
+      debug:
+        verbosity: basic
+
+    service:
+      pipelines:
+        metrics:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [kafka, debug]
+        traces:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [kafka, debug]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-collector
+  namespace: watchdog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otel-collector
+  template:
+    metadata:
+      labels:
+        app: otel-collector
+    spec:
+      containers:
+        - name: otel-collector
+          image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.156.0
+          args: ["--config=/etc/otel/config.yaml"]
+          ports:
+            - containerPort: 4317  # OTLP gRPC
+            - containerPort: 4318  # OTLP HTTP
+          volumeMounts:
+            - name: config
+              mountPath: /etc/otel
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
+      volumes:
+        - name: config
+          configMap:
+            name: otel-collector-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: otel-collector
+  namespace: watchdog
+spec:
+  type: NodePort
+  selector:
+    app: otel-collector
+  ports:
+    - name: otlp-grpc
+      port: 4317
+      targetPort: 4317
+      nodePort: 30317
+    - name: otlp-http
+      port: 4318
+      targetPort: 4318
+      nodePort: 30318
