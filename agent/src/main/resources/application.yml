@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: agent
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+  otlp:
+    metrics:
+      export:
+        # OTel Collector 엔드포인트 (OTLP over gRPC)
+        url: http://localhost:4318/v1/metrics
+        step: 10s
+  tracing:
+    sampling:
+      probability: 1.0
+
+otel:
+  exporter:
+    otlp:
+      endpoint: http://localhost:4317

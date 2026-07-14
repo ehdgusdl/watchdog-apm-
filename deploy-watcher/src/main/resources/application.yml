@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: deploy-watcher
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+server:
+  port: 8084
+
+watchdog:
+  kafka:
+    deploys-topic: metrics-deploys
+  k8s:
+    # 비우면 in-cluster / 로컬 kubeconfig 를 자동 사용 (fabric8 기본 동작)
+    namespace: default
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info

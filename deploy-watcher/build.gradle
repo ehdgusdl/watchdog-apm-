@@ -1,0 +1,6 @@
+// Deploy Watcher — K8s watch 로 배포 이벤트 감지 → Kafka 발행
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'io.fabric8:kubernetes-client:6.13.5'
+}

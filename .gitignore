@@ -74,3 +74,7 @@ volumes/
 
 # ===== OMC state =====
 .omc/
+
+# ===== Claude Code =====
+CLAUDE.md
+.claude/

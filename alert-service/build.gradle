@@ -1,0 +1,5 @@
+// Alert Service — Kafka(alerts) 소비 → Slack 알림
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.kafka:spring-kafka'
+}

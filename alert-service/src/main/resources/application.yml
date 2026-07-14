@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: alert-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: alert-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+server:
+  port: 8082
+
+watchdog:
+  kafka:
+    alerts-topic: alerts
+  slack:
+    # Slack Incoming Webhook URL (환경변수로 주입 권장)
+    webhook-url: ${SLACK_WEBHOOK_URL:}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info

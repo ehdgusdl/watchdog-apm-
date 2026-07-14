@@ -1,0 +1,6 @@
+// Detector — Kafka Streams 로 실시간 이상 탐지 (group: detector)
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.apache.kafka:kafka-streams'
+}

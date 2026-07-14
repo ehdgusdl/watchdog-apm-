@@ -1,0 +1,6 @@
+// Mitigation Service — Kafka(alerts) 소비 → K8s API 로 자동 완화
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'io.fabric8:kubernetes-client:6.13.5'
+}

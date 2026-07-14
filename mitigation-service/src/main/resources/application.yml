@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: mitigation-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: mitigation-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+server:
+  port: 8083
+
+watchdog:
+  kafka:
+    alerts-topic: alerts
+  k8s:
+    # 비우면 in-cluster / 로컬 kubeconfig 를 자동 사용 (fabric8 기본 동작)
+    namespace: default
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info

@@ -1,0 +1,10 @@
+// Java Agent — 애플리케이션 메트릭을 OpenTelemetry로 계측해 OTLP(gRPC)로 Push
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Micrometer → OTLP 메트릭 익스포트
+    implementation 'io.micrometer:micrometer-registry-otlp'
+    // 트레이싱 OTel 브리지 + OTLP 익스포터
+    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+}
