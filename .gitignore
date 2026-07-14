@@ -1,0 +1,76 @@
+# ===== Java / JVM =====
+*.class
+*.log
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# ===== Gradle =====
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/**/build/
+out/
+
+# ===== Maven =====
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ===== IDE - IntelliJ IDEA =====
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ===== IDE - Eclipse =====
+.classpath
+.project
+.settings/
+bin/
+
+# ===== IDE - VS Code =====
+.vscode/
+*.code-workspace
+
+# ===== OS =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ===== Environment / Secrets =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# ===== Docker =====
+docker-compose.override.yml
+
+# ===== Kubernetes =====
+kubeconfig
+*.kubeconfig
+
+# ===== Data / Runtime (ClickHouse, Kafka, Grafana volumes) =====
+data/
+volumes/
+*.tmp
+
+# ===== OMC state =====
+.omc/

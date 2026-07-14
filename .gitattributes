@@ -1,0 +1,24 @@
+# Normalize line endings to LF on checkin
+* text=auto eol=lf
+
+# Scripts must stay LF
+*.sh   text eol=lf
+*.bash text eol=lf
+
+# Windows batch files stay CRLF
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+# Binary files — never normalize
+*.jar    binary
+*.war    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.pdf    binary
+
+# Gradle wrapper
+gradlew      text eol=lf
+gradlew.bat  text eol=crlf
