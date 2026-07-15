@@ -1,6 +1,5 @@
 rootProject.name = 'watchdog-apm'
 
-include 'agent'
 include 'detector'
 include 'alert-service'
 include 'mitigation-service'
