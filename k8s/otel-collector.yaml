@@ -25,10 +25,10 @@ data:
           - kafka.watchdog.svc.cluster.local:9094
         # kafka exporter 최신 스키마: topic/encoding 은 신호별 하위 설정
         metrics:
-          topic: metrics-deploys
+          topic: metrics
           encoding: otlp_json
         traces:
-          topic: metrics-deploys
+          topic: metrics
           encoding: otlp_json
       debug:
         verbosity: basic
