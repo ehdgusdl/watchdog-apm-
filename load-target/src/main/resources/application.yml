@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: load-target
+
+server:
+  port: 8090
+
+# 부하 시나리오 조절 (환경변수 ERROR_RATE / LATENCY_MS 로 오버라이드)
+error:
+  rate: 0.0
+latency:
+  ms: 50
