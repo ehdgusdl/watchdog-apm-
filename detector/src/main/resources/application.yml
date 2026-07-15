@@ -14,7 +14,8 @@ server:
 
 watchdog:
   kafka:
-    input-topic: metrics-deploys
+    metrics-topic: metrics
+    deploys-topic: deploys
     alerts-topic: alerts
 
 management:
