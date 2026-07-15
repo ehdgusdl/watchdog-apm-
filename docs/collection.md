@@ -13,6 +13,7 @@
 이러면 고객사 앱이 **우리 서버로 gRPC Push 방식으로 메트릭을 쏜다.** 앱 코드 수정은 0.
 
 실행 예시:
+
 ```bash
 java -javaagent:opentelemetry-javaagent.jar \
      -Dotel.exporter.otlp.endpoint=<우리 주소>:4317 \
@@ -38,10 +39,12 @@ java -javaagent:opentelemetry-javaagent.jar \
 
 참고로 OTLP는 HTTP로도 실을 수 있다(포트 `4318`). HTTP/JSON은 사람이 읽기 쉽고 프록시·방화벽 통과가 쉬워 그 경우에만 쓰고, **성능 기본값은 gRPC**다.
 
-| | 포트 | 특징 |
-|---|---|---|
+
+|          | 포트   | 특징                |
+| -------- | ---- | ----------------- |
 | **gRPC** | 4317 | 기본. 빠름·효율적 (바이너리) |
-| HTTP | 4318 | 방화벽 친화적 (JSON) |
+| HTTP     | 4318 | 방화벽 친화적 (JSON)    |
+
 
 ## 우리 프로젝트에서는
 
