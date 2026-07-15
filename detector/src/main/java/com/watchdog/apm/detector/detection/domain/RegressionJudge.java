@@ -1,4 +1,4 @@
-package com.watchdog.apm.detector.judgment;
+package com.watchdog.apm.detector.detection.domain;
 
 /**
  * 배포 전후(before/after) error rate 를 비교해 회귀를 판정하는 순수 로직.
@@ -18,7 +18,7 @@ package com.watchdog.apm.detector.judgment;
  * 통계 검정/분산도 쓰지 않는다(표본 부족·설명가능성).
  *
  * <p>참고: 워밍업(배포 직후 30초 제외)과 rollback 배포 제외는 이 순수 로직이 아니라
- * 상위 스트림 토폴로지에서 처리한다. 여기 들어오는 before/after 는 이미 정제된 값이다.
+ * 상위 스트림(service)에서 처리한다. 여기 들어오는 before/after 는 이미 정제된 값이다.
  */
 public final class RegressionJudge {
 

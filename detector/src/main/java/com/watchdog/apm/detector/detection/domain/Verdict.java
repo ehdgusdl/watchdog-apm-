@@ -1,4 +1,4 @@
-package com.watchdog.apm.detector.judgment;
+package com.watchdog.apm.detector.detection.domain;
 
 /** 배포 회귀 판정 결과. */
 public enum Verdict {

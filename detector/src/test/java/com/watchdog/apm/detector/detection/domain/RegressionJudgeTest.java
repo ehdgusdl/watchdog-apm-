@@ -1,4 +1,4 @@
-package com.watchdog.apm.detector.judgment;
+package com.watchdog.apm.detector.detection.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * 판정 규칙 검증. detector/CLAUDE.md 의 테스트 케이스 중 순수 로직 해당분.
- * (워밍업 30초 제외 / rollback 제외는 스트림 토폴로지 레벨에서 별도 검증)
+ * (워밍업 30초 제외 / rollback 제외는 스트림 service 레벨에서 별도 검증)
  */
 class RegressionJudgeTest {
 
